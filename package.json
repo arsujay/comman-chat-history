@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "A premium Mac desktop app to view chat history from Codex CLI and GitHub Copilot",
   "author": "suarunac",
+  "engines": {
+    "node": ">=22"
+  },
   "main": "electron/main.js",
   "scripts": {
     "dev": "concurrently \"vite\" \"wait-on http://localhost:5173 && env -u ELECTRON_RUN_AS_NODE electron .\"",
@@ -11,7 +14,8 @@
     "prebuild": "npm run copy-assets",
     "vite:build": "npm run copy-assets && vite build",
     "pack": "vite build && electron-builder --dir",
-    "build": "vite build && electron-builder",
+    "build": "vite build && electron-builder --publish never",
+    "build:ci": "npm run copy-assets && vite build && electron-builder --publish never",
     "preview": "vite preview"
   },
   "build": {

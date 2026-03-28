@@ -63,8 +63,15 @@ The dashboard shows:
 
 ## Requirements
 
-- **Node.js** (see `.nvmrc` if you use `nvm`).
+- **Node.js 22+** (see `.nvmrc`; run `nvm use` if you use nvm). Older Node versions may fail Vite 6 builds.
 - **npm** for install and scripts.
+
+## Releases
+
+Prebuilt **macOS** installers (**DMG** and **ZIP** for Apple Silicon) are attached to **[GitHub Releases](https://github.com/arsujay/comman-chat-history/releases)**.  
+Pushing a git tag matching `v*` (for example `v1.0.0`) runs the [release workflow](.github/workflows/release.yml), which builds the app and uploads the artifacts to that release.
+
+See [CHANGELOG.md](CHANGELOG.md) for version notes.
 
 Supported platforms for **development:** macOS is the primary target (paths for Copilot storage match macOS VS Code layout). **Built installers** are configured for macOS (DMG/ZIP), Windows (NSIS/portable), and Linux (AppImage) via `electron-builder`; path assumptions for Copilot on Windows/Linux may need verification.
 

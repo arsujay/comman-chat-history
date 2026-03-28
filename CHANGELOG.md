@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.0.1] — 2026-03-27
+
+### Fixed
+
+- **GitHub Releases:** CI now uploads **both** the macOS **DMG** and **ZIP** (previous workflow often attached only the ZIP). Release assets use predictable names: `ChatHistoryViewer-<version>-<arch>.dmg` / `.zip`.
+
+### Changed
+
+- **macOS** `artifactName` in `electron-builder`: `ChatHistoryViewer-${version}-${arch}.${ext}` (no spaces; stable download URLs).
+
 ## [1.0.0] — 2026-03-27
 
 First public release.
@@ -14,4 +24,5 @@ First public release.
 - **Resizable sidebar** and accordion folder expansion.
 - **macOS** installers: **DMG** and **ZIP** (Apple Silicon/arm64 builds from CI).
 
+[1.0.1]: https://github.com/arsujay/comman-chat-history/releases/tag/v1.0.1
 [1.0.0]: https://github.com/arsujay/comman-chat-history/releases/tag/v1.0.0

@@ -1,4 +1,4 @@
-# Build macOS installers and attach them to a GitHub Release when you push a version tag (e.g. v1.0.0).
+# Build macOS installers and attach them to a GitHub Release when you push a version tag (e.g. v1.0.1).
 name: Release
 
 on:
@@ -28,15 +28,28 @@ jobs:
       - name: Build app (Vite + electron-builder)
         run: npm run build:ci
         env:
-          # Avoid electron-builder implicit publish / CI quirks
           CSC_IDENTITY_AUTO_DISCOVERY: false
 
-      - name: Upload installers to GitHub Release
-        uses: softprops/action-gh-release@v2
-        with:
-          generate_release_notes: true
-          files: |
-            release/*.dmg
-            release/*-mac.zip
+      - name: List release artifacts
+        run: |
+          ls -la release/
+          find release -maxdepth 1 -type f \( -name '*.dmg' -o -name '*.zip' \) ! -name '*.blockmap' | sort
+
+      - name: Create or update GitHub Release with DMG and ZIP
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euxo pipefail
+          mapfile -t ASSETS < <(find release -maxdepth 1 -type f \( -name '*.dmg' -o -name '*.zip' \) ! -name '*.blockmap' | sort)
+          echo "Found ${#ASSETS[@]} asset(s)"
+          for f in "${ASSETS[@]}"; do
+            echo " - $f"
+          done
+          [ "${#ASSETS[@]}" -ge 2 ] || { echo "Expected at least one .dmg and one .zip (excluding blockmaps)"; exit 1; }
+          if gh release view "${GITHUB_REF_NAME}" --repo "${GITHUB_REPOSITORY}" >/dev/null 2>&1; then
+            gh release upload "${GITHUB_REF_NAME}" "${ASSETS[@]}" --clobber --repo "${GITHUB_REPOSITORY}"
+          else
+            gh release create "${GITHUB_REF_NAME}" "${ASSETS[@]}" \
+              --generate-notes \
+              --repo "${GITHUB_REPOSITORY}"
+          fi

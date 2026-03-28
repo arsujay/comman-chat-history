@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.0.2] — 2026-03-27
+
+### Fixed
+
+- **GitHub Actions (Release):** The upload step used `mapfile`, which **does not exist in Bash 3.2** on `macos-latest` runners, so the job failed and **no DMG** was published. Replaced with a Bash-3-compatible loop so **DMG + ZIP** upload succeeds.
+
 ## [1.0.1] — 2026-03-27
 
 ### Fixed
@@ -24,5 +30,6 @@ First public release.
 - **Resizable sidebar** and accordion folder expansion.
 - **macOS** installers: **DMG** and **ZIP** (Apple Silicon/arm64 builds from CI).
 
+[1.0.2]: https://github.com/arsujay/comman-chat-history/releases/tag/v1.0.2
 [1.0.1]: https://github.com/arsujay/comman-chat-history/releases/tag/v1.0.1
 [1.0.0]: https://github.com/arsujay/comman-chat-history/releases/tag/v1.0.0

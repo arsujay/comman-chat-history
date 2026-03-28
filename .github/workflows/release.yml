@@ -35,12 +35,17 @@ jobs:
           ls -la release/
           find release -maxdepth 1 -type f \( -name '*.dmg' -o -name '*.zip' \) ! -name '*.blockmap' | sort
 
+      # macOS runners use Bash 3.2 — no `mapfile` (Bash 4+). Build argv array with a plain loop.
       - name: Create or update GitHub Release with DMG and ZIP
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        shell: bash
         run: |
           set -euxo pipefail
-          mapfile -t ASSETS < <(find release -maxdepth 1 -type f \( -name '*.dmg' -o -name '*.zip' \) ! -name '*.blockmap' | sort)
+          ASSETS=()
+          while IFS= read -r line; do
+            [ -n "$line" ] && ASSETS+=("$line")
+          done < <(find release -maxdepth 1 -type f \( -name '*.dmg' -o -name '*.zip' \) ! -name '*.blockmap' | sort)
           echo "Found ${#ASSETS[@]} asset(s)"
           for f in "${ASSETS[@]}"; do
             echo " - $f"

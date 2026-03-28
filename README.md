@@ -10,10 +10,10 @@ Everything runs **on your machine**. No accounts, no cloud sync, and no data lea
 
 | | |
 |--|--|
-| **DMG (recommended)** | [ChatHistoryViewer-1.0.300-arm64.dmg](https://github.com/arsujay/comman-chat-history/releases/download/v1.0.300/ChatHistoryViewer-1.0.300-arm64.dmg) |
-| **ZIP** | [ChatHistoryViewer-1.0.300-arm64.zip](https://github.com/arsujay/comman-chat-history/releases/download/v1.0.300/ChatHistoryViewer-1.0.300-arm64.zip) |
+| **DMG (recommended)** | [ChatHistoryViewer-1.0.301-arm64.dmg](https://github.com/arsujay/comman-chat-history/releases/download/v1.0.301/ChatHistoryViewer-1.0.301-arm64.dmg) |
+| **ZIP** | [ChatHistoryViewer-1.0.301-arm64.zip](https://github.com/arsujay/comman-chat-history/releases/download/v1.0.301/ChatHistoryViewer-1.0.301-arm64.zip) |
 
-*Version `1.0.300` is the CI/build train until a stable DMG is published from Actions; then we’ll align semver again.*
+*Build train (`1.0.30x`) until a green DMG is on Releases; then we can normalize semver.*
 
 **All releases:** [github.com/arsujay/comman-chat-history/releases](https://github.com/arsujay/comman-chat-history/releases) · **Latest:** [releases/latest](https://github.com/arsujay/comman-chat-history/releases/latest) (open **Assets** if you need a different version).
 
@@ -103,7 +103,7 @@ The dashboard shows:
 
 Prebuilt **macOS** installers (**DMG** and **ZIP** for Apple Silicon) are published on **[GitHub Releases](https://github.com/arsujay/comman-chat-history/releases)**.
 
-The [release workflow](.github/workflows/release.yml) uses **pnpm** (not npm) on macOS runners — npm often crashes on GitHub’s macOS images with `Exit handler never called!`. Pushing a tag like **`v1.0.300`** runs `pnpm install --frozen-lockfile`, then `pnpm run build:ci`, then uploads **DMG + ZIP** with the GitHub CLI.
+The [release workflow](.github/workflows/release.yml) uses **pnpm** (not npm) on macOS runners — npm often crashes on GitHub’s macOS images with `Exit handler never called!`. Pushing a tag like **`v1.0.301`** runs `pnpm install --frozen-lockfile`, then `pnpm run build:ci`, then uploads **DMG + ZIP** with the GitHub CLI.
 
 See [CHANGELOG.md](CHANGELOG.md) for version notes.
 

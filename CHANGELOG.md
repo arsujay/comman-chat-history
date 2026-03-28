@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.0.301] — 2026-03-28
+
+### Fixed
+
+- **GitHub Actions:** `pnpm/action-setup` failed with “Multiple versions of pnpm specified” when both `version: 9` in the workflow and `packageManager` in `package.json` were set. Removed the workflow `version` so Corepack/packageManager (`pnpm@9.15.4`) is the single source of truth.
+
 ## [1.0.300] — 2026-03-28
 
 ### Fixed
@@ -43,6 +49,7 @@ First public release.
 - **Resizable sidebar** and accordion folder expansion.
 - **macOS** installers: **DMG** and **ZIP** (Apple Silicon/arm64 builds from CI).
 
+[1.0.301]: https://github.com/arsujay/comman-chat-history/releases/tag/v1.0.301
 [1.0.300]: https://github.com/arsujay/comman-chat-history/releases/tag/v1.0.300
 [1.0.3]: https://github.com/arsujay/comman-chat-history/releases/tag/v1.0.3
 [1.0.2]: https://github.com/arsujay/comman-chat-history/releases/tag/v1.0.2

@@ -1,4 +1,4 @@
-# Build macOS installers and attach them to a GitHub Release when you push a version tag (e.g. v1.0.300).
+# Build macOS installers and attach them to a GitHub Release when you push a version tag (e.g. v1.0.301).
 # Uses pnpm instead of npm — npm on GitHub macOS runners often crashes with "Exit handler never called!".
 name: Release
 
@@ -17,10 +17,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      # Version comes from package.json "packageManager" — do not set `version` here (duplicate = ERR_PNPM_BAD_PM_VERSION).
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
-        with:
-          version: 9
 
       - name: Setup Node.js
         uses: actions/setup-node@v4

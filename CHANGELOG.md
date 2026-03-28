@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.300] — 2026-03-28
+
+### Fixed
+
+- **GitHub Actions:** Switched Release job from **npm** to **pnpm** — npm repeatedly crashed on macOS runners (`Exit handler never called!`). Added **`pnpm-lock.yaml`** (from `pnpm import`).
+- **Versioning:** App version **`1.0.300`** is used as the build train until a DMG publishes successfully from CI; then semver can return to normal patch bumps.
+
 ## [1.0.3] — 2026-03-27
 
 ### Fixed
@@ -36,6 +43,7 @@ First public release.
 - **Resizable sidebar** and accordion folder expansion.
 - **macOS** installers: **DMG** and **ZIP** (Apple Silicon/arm64 builds from CI).
 
+[1.0.300]: https://github.com/arsujay/comman-chat-history/releases/tag/v1.0.300
 [1.0.3]: https://github.com/arsujay/comman-chat-history/releases/tag/v1.0.3
 [1.0.2]: https://github.com/arsujay/comman-chat-history/releases/tag/v1.0.2
 [1.0.1]: https://github.com/arsujay/comman-chat-history/releases/tag/v1.0.1

@@ -10,8 +10,10 @@ Everything runs **on your machine**. No accounts, no cloud sync, and no data lea
 
 | | |
 |--|--|
-| **DMG (recommended)** | [ChatHistoryViewer-1.0.3-arm64.dmg](https://github.com/arsujay/comman-chat-history/releases/download/v1.0.3/ChatHistoryViewer-1.0.3-arm64.dmg) |
-| **ZIP** | [ChatHistoryViewer-1.0.3-arm64.zip](https://github.com/arsujay/comman-chat-history/releases/download/v1.0.3/ChatHistoryViewer-1.0.3-arm64.zip) |
+| **DMG (recommended)** | [ChatHistoryViewer-1.0.300-arm64.dmg](https://github.com/arsujay/comman-chat-history/releases/download/v1.0.300/ChatHistoryViewer-1.0.300-arm64.dmg) |
+| **ZIP** | [ChatHistoryViewer-1.0.300-arm64.zip](https://github.com/arsujay/comman-chat-history/releases/download/v1.0.300/ChatHistoryViewer-1.0.300-arm64.zip) |
+
+*Version `1.0.300` is the CI/build train until a stable DMG is published from Actions; then we’ll align semver again.*
 
 **All releases:** [github.com/arsujay/comman-chat-history/releases](https://github.com/arsujay/comman-chat-history/releases) · **Latest:** [releases/latest](https://github.com/arsujay/comman-chat-history/releases/latest) (open **Assets** if you need a different version).
 
@@ -95,13 +97,13 @@ The dashboard shows:
 ## Requirements
 
 - **Node.js 22+** (see `.nvmrc`; run `nvm use` if you use nvm). Older Node versions may fail Vite 6 builds.
-- **npm** for install and scripts.
+- **pnpm** (recommended) or **npm** — `pnpm-lock.yaml` is the source of truth for CI; `package-lock.json` remains for `npm install` if you prefer.
 
 ## Releases
 
 Prebuilt **macOS** installers (**DMG** and **ZIP** for Apple Silicon) are published on **[GitHub Releases](https://github.com/arsujay/comman-chat-history/releases)**.
 
-Pushing a git tag matching `v*` (for example `v1.0.3`) runs the [release workflow](.github/workflows/release.yml): it builds with `electron-builder`, then uploads **both** the **`.dmg`** and **`.zip`** (Apple Silicon) using the GitHub CLI so both appear under **Assets**.
+The [release workflow](.github/workflows/release.yml) uses **pnpm** (not npm) on macOS runners — npm often crashes on GitHub’s macOS images with `Exit handler never called!`. Pushing a tag like **`v1.0.300`** runs `pnpm install --frozen-lockfile`, then `pnpm run build:ci`, then uploads **DMG + ZIP** with the GitHub CLI.
 
 See [CHANGELOG.md](CHANGELOG.md) for version notes.
 
@@ -114,7 +116,8 @@ Supported platforms for **development:** macOS is the primary target (paths for 
 ```bash
 git clone https://github.com/arsujay/comman-chat-history.git
 cd comman-chat-history
-npm install
+corepack enable && pnpm install
+# or: npm install
 ```
 
 ### Development (Vite + Electron)

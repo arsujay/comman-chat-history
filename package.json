@@ -1,8 +1,9 @@
 {
   "name": "chat-history-viewer",
-  "version": "1.0.3",
+  "version": "1.0.300",
   "description": "A premium Mac desktop app to view chat history from Codex CLI and GitHub Copilot",
   "author": "suarunac",
+  "packageManager": "pnpm@9.15.4",
   "engines": {
     "node": ">=22"
   },

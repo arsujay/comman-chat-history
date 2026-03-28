@@ -1,4 +1,5 @@
-# Build macOS installers and attach them to a GitHub Release when you push a version tag (e.g. v1.0.1).
+# Build macOS installers and attach them to a GitHub Release when you push a version tag (e.g. v1.0.300).
+# Uses pnpm instead of npm — npm on GitHub macOS runners often crashes with "Exit handler never called!".
 name: Release
 
 on:
@@ -16,17 +17,22 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '22'
+          cache: pnpm
 
       - name: Install dependencies
-        # Use frozen lockfile (same guarantees as npm ci) — npm ci sometimes hits npm/cli bugs on macOS GHA runners.
-        run: npm install --frozen-lockfile --no-audit --no-fund
+        run: pnpm install --frozen-lockfile
 
       - name: Build app (Vite + electron-builder)
-        run: npm run build:ci
+        run: pnpm run build:ci
         env:
           CSC_IDENTITY_AUTO_DISCOVERY: false
 

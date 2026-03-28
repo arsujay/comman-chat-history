@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.0.3] — 2026-03-27
+
+### Fixed
+
+- **GitHub Actions:** `npm ci` intermittently crashes on macOS runners with `npm error Exit handler never called!` (npm/cli issue). Install step now uses `npm install --frozen-lockfile` and disables the setup-node npm cache on Release builds to avoid flaky installs.
+
 ## [1.0.2] — 2026-03-27
 
 ### Fixed
@@ -30,6 +36,7 @@ First public release.
 - **Resizable sidebar** and accordion folder expansion.
 - **macOS** installers: **DMG** and **ZIP** (Apple Silicon/arm64 builds from CI).
 
+[1.0.3]: https://github.com/arsujay/comman-chat-history/releases/tag/v1.0.3
 [1.0.2]: https://github.com/arsujay/comman-chat-history/releases/tag/v1.0.2
 [1.0.1]: https://github.com/arsujay/comman-chat-history/releases/tag/v1.0.1
 [1.0.0]: https://github.com/arsujay/comman-chat-history/releases/tag/v1.0.0

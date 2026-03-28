@@ -10,8 +10,8 @@ Everything runs **on your machine**. No accounts, no cloud sync, and no data lea
 
 | | |
 |--|--|
-| **DMG (recommended)** | [ChatHistoryViewer-1.0.2-arm64.dmg](https://github.com/arsujay/comman-chat-history/releases/download/v1.0.2/ChatHistoryViewer-1.0.2-arm64.dmg) |
-| **ZIP** | [ChatHistoryViewer-1.0.2-arm64.zip](https://github.com/arsujay/comman-chat-history/releases/download/v1.0.2/ChatHistoryViewer-1.0.2-arm64.zip) |
+| **DMG (recommended)** | [ChatHistoryViewer-1.0.3-arm64.dmg](https://github.com/arsujay/comman-chat-history/releases/download/v1.0.3/ChatHistoryViewer-1.0.3-arm64.dmg) |
+| **ZIP** | [ChatHistoryViewer-1.0.3-arm64.zip](https://github.com/arsujay/comman-chat-history/releases/download/v1.0.3/ChatHistoryViewer-1.0.3-arm64.zip) |
 
 **All releases:** [github.com/arsujay/comman-chat-history/releases](https://github.com/arsujay/comman-chat-history/releases) · **Latest:** [releases/latest](https://github.com/arsujay/comman-chat-history/releases/latest) (open **Assets** if you need a different version).
 
@@ -101,7 +101,7 @@ The dashboard shows:
 
 Prebuilt **macOS** installers (**DMG** and **ZIP** for Apple Silicon) are published on **[GitHub Releases](https://github.com/arsujay/comman-chat-history/releases)**.
 
-Pushing a git tag matching `v*` (for example `v1.0.2`) runs the [release workflow](.github/workflows/release.yml): it builds with `electron-builder`, then uploads **both** the **`.dmg`** and **`.zip`** (Apple Silicon) using the GitHub CLI so both appear under **Assets**.
+Pushing a git tag matching `v*` (for example `v1.0.3`) runs the [release workflow](.github/workflows/release.yml): it builds with `electron-builder`, then uploads **both** the **`.dmg`** and **`.zip`** (Apple Silicon) using the GitHub CLI so both appear under **Assets**.
 
 See [CHANGELOG.md](CHANGELOG.md) for version notes.
 

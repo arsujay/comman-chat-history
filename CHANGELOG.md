@@ -6,6 +6,7 @@ First public release.
 
 ### Added
 
+- README **screenshots** of the main window, usage dashboard, sidebar filters, and conversation view (`docs/screenshots/`), plus `npm run screenshots` to regenerate them.
 - Browse **Codex CLI**, **GitHub Copilot** (VS Code storage), and **Cursor** chat history from local disk.
 - **Session list** with workspace folders, search, and filters by source.
 - **Full transcript** view with Markdown and syntax-highlighted code blocks.

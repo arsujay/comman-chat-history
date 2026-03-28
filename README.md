@@ -8,6 +8,26 @@ Everything runs **on your machine**. No accounts, no cloud sync, and no data lea
 
 ---
 
+## Screenshots
+
+| Main window (empty state) | Usage dashboard |
+|:-:|:-:|
+| ![Main window — select a conversation](docs/screenshots/01-main-empty-state.png) | ![Usage dashboard — monthly activity and KPIs](docs/screenshots/02-usage-dashboard.png) |
+
+| Sidebar filters & folders | Conversation view (with a session open) |
+|:-:|:-:|
+| ![Filters — Codex tab and folder list](docs/screenshots/03-sidebar-filters.png) | ![Chat view — transcript with Markdown and code](docs/screenshots/04-conversation-view.png) |
+
+**Regenerate** these images (uses your **local** chat history for the conversation screenshot if sessions exist):
+
+```bash
+npm run screenshots
+```
+
+Requires `npm run vite:build` output (the script runs the build first). Uses Electron with `CHAT_HISTORY_VIEWER_USE_DIST=1` so the packaged `dist/` UI is captured without a dev server.
+
+---
+
 ## What it does
 
 | Source | Where it reads from (typical) |

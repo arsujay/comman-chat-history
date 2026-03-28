@@ -80,9 +80,12 @@ function createWindow() {
     ...(icon ? { icon } : {}),
   });
 
-  // In dev mode, load from Vite dev server
+  // In dev mode, load from Vite dev server (unless dist is forced for docs/screenshots)
   const isDev = !app.isPackaged;
-  if (isDev) {
+  const useDist =
+    process.env.CHAT_HISTORY_VIEWER_USE_DIST === '1' ||
+    process.env.CHAT_HISTORY_VIEWER_USE_DIST === 'true';
+  if (isDev && !useDist) {
     mainWindow.loadURL('http://localhost:5173');
   } else {
     mainWindow.loadFile(path.join(__dirname, '..', 'dist', 'index.html'));

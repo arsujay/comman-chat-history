@@ -1,0 +1,59 @@
+{
+  "name": "chat-history-viewer",
+  "version": "1.0.0",
+  "description": "A premium Mac desktop app to view chat history from Codex CLI and GitHub Copilot",
+  "author": "suarunac",
+  "main": "electron/main.js",
+  "scripts": {
+    "dev": "concurrently \"vite\" \"wait-on http://localhost:5173 && env -u ELECTRON_RUN_AS_NODE electron .\"",
+    "copy-assets": "cp CHC.png public/CHC.png",
+    "predev": "npm run copy-assets",
+    "prebuild": "npm run copy-assets",
+    "vite:build": "npm run copy-assets && vite build",
+    "pack": "vite build && electron-builder --dir",
+    "build": "vite build && electron-builder",
+    "preview": "vite preview"
+  },
+  "build": {
+    "appId": "com.chathistory.viewer",
+    "productName": "Chat History Viewer",
+    "icon": "CHC.png",
+    "publish": null,
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "electron/**/*.js",
+      "package.json",
+      "CHC.png"
+    ],
+    "asar": true,
+    "mac": {
+      "category": "public.app-category.developer-tools",
+      "target": [
+        "dmg",
+        "zip"
+      ]
+    },
+    "win": {
+      "target": [
+        "nsis",
+        "portable"
+      ]
+    },
+    "linux": {
+      "target": [
+        "AppImage"
+      ]
+    }
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "electron": "^35.1.2",
+    "electron-builder": "^26.0.12",
+    "vite": "^6.3.4",
+    "wait-on": "^8.0.3"
+  },
+  "dependencies": {}
+}

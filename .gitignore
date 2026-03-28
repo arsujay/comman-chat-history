@@ -1,0 +1,22 @@
+# Dependencies
+node_modules/
+
+# Build / packager output
+dist/
+release/
+out/
+
+# Logs & env
+*.log
+.env
+.env.*
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# Vite
+*.local
